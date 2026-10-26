@@ -1,4 +1,4 @@
-// Recorded hospital-project evidence, kept separate from the general portfolio catalog.
+// Recorded hospital metrics and validation source excerpt.
 export const metrics = [
   {
     "value": "4,812",

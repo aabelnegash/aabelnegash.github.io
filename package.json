@@ -16,7 +16,7 @@
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.4"
   },
-  "description": "A data analytics portfolio built with Vite, vanilla JavaScript and Tailwind CSS.",
+  "description": "Personal portfolio for data analysis, modeling, and programming projects.",
   "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=22.12.0"

@@ -78,7 +78,7 @@ function exampleLink(value, label) {
   return link;
 }
 
-/** Normalize optional presentation fields and reject entries that would break the catalog. */
+// Check required project fields and fill optional values.
 export function normalizeProjects(projects) {
   if (!Array.isArray(projects)) throw new TypeError('The project catalog must be an array.');
   const ids = new Set();

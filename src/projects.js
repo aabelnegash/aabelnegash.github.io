@@ -1,4 +1,4 @@
-// Project catalog. Add or reorder entries without changing the page layout.
+// Project details and links for the homepage and project directory.
 export const projects = [
   {
     "id": "auto-loan-credit-risk",
