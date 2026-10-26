@@ -20,7 +20,7 @@ The production build goes into `dist/`. Vite uses `base: './'` so built assets h
 
 ## Site structure
 
-- `/`: introduction, selected projects, background, and professional profiles.
+- `/`: introduction, selected projects, and professional profiles.
 - `/projects/`: the full project catalog and category filters.
 - `/examples/hospital-validation/`: a project-specific code excerpt and recorded output.
 - The hospital project sites remain separate at their existing addresses. The credit-risk project links to its public documentation repository.
