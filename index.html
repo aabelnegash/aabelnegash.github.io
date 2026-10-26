@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="description" content="Abel Negash's data analytics portfolio: Python data cleaning, SQL analysis, Excel reporting, and Power BI dashboards." />
+    <meta property="og:title" content="Abel Negash | Data Analytics Portfolio" />
+    <meta property="og:description" content="Explore reproducible hospital data cleaning and quality analysis projects, source code, and reporting." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:," />
+    <title>Abel Negash | Data Analytics Portfolio</title>
+  </head>
+  <body class="bg-slate-950 text-white antialiased">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="site-wordmark" href="#main">Data operations<span class="wordmark-label">/ portfolio</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#sandbox">Sandbox</a>
+        <a class="nav-source" href="https://github.com/aabelnegash" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-square" aria-hidden="true"></span>Abel Negash / Data analytics portfolio</p>
+          <h1 id="hero-title">Data Operations<br /><span>Dashboard</span></h1>
+          <p class="hero-description">From hospital data cleaning to SQL analysis, Excel reporting, and Power BI dashboards. Explore the process, the code, and the results.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore projects <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#sandbox">Try the sandbox <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="workflow-visual" aria-label="Hospital project workflow">
+          <div class="workflow-topline"><span>HOSPITAL DATA WORKFLOW</span><span aria-hidden="true">01 → 04</span></div>
+          <ol class="workflow-stages">
+            <li><span class="stage-number">01</span><span><strong>Source</strong><small>CMS hospital data</small></span><span class="stage-symbol" aria-hidden="true">↓</span></li>
+            <li><span class="stage-number">02</span><span><strong>Clean & validate</strong><small>Python / pandas</small></span><span class="stage-symbol" aria-hidden="true">↓</span></li>
+            <li><span class="stage-number">03</span><span><strong>Analyze</strong><small>SQLite / SQL</small></span><span class="stage-symbol" aria-hidden="true">↓</span></li>
+            <li><span class="stage-number">04</span><span><strong>Report</strong><small>Excel / Power BI</small></span><span class="stage-symbol" aria-hidden="true">↗</span></li>
+          </ol>
+        </div>
+      </section>
+      <section class="metric-section" aria-labelledby="snapshot-title">
+        <div class="section-kicker"><h2 id="snapshot-title">From the hospital projects</h2><span>Recorded dataset snapshot</span></div>
+        <div id="metric-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"></div>
+      </section>
+      <section id="projects" class="projects-section" aria-labelledby="projects-title">
+        <div class="section-heading"><div><p class="eyebrow">PROJECT INDEX</p><h2 id="projects-title">Selected work</h2></div><span id="project-count" class="section-meta">2 projects</span></div>
+        <div class="project-filter" role="group" aria-label="Filter projects">
+          <button type="button" data-filter="all" aria-pressed="true">All projects <span id="all-project-count">02</span></button>
+          <button type="button" data-filter="Data cleaning" aria-pressed="false">Data cleaning</button>
+          <button type="button" data-filter="Analysis & reporting" aria-pressed="false">Analysis & reporting</button>
+        </div>
+        <div id="project-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+        <noscript><p>Explore <a href="https://aabelnegash.github.io/hospital-cleaning-project/">Hospital Data Cleaning</a> and <a href="https://aabelnegash.github.io/hospital-quality-analysis/">Hospital Quality Analysis</a>. Enable JavaScript for the project filters and sandbox.</p></noscript>
+      </section>
+      <section id="sandbox" class="sandbox-section" aria-labelledby="sandbox-title">
+        <div class="section-heading"><div><p class="eyebrow">INTERACTIVE PREVIEW</p><h2 id="sandbox-title">Inside the validation step</h2></div><span class="simulation-tag">Simulation</span></div>
+        <p class="section-description">A browser simulation using recorded report values. The source excerpt comes from the cleaning project; this preview does not execute Python or access the dataset.</p>
+        <div class="sandbox-ide grid grid-cols-1 lg:grid-cols-2">
+          <div class="editor-pane">
+            <div class="pane-header"><span class="file-label"><span class="file-language" aria-hidden="true">py</span>src/validate.py</span><a id="sandbox-source" href="https://github.com/aabelnegash/hospital-cleaning-project/blob/main/src/validate.py#L78-L95" target="_blank" rel="noopener">Source excerpt <span aria-hidden="true">↗</span></a></div>
+            <div class="editor-caption">ZIP / phone / state format checks</div>
+            <pre class="sandbox-code code-scroller" tabindex="0" aria-label="Python validation source excerpt"><code id="sandbox-code"></code></pre>
+            <div class="editor-footnote">Excerpt from the full validation script</div>
+          </div>
+          <section class="console-pane" id="sandbox-console" aria-busy="false" aria-label="Pipeline simulation console">
+            <div class="pane-header"><span class="file-label"><span class="terminal-symbol" aria-hidden="true">&gt;_</span>pipeline.console</span><span id="terminal-status" class="terminal-status">IDLE</span></div>
+            <div class="console-controls"><div><p class="console-title">Preview a successful validation</p><p class="console-description">The output reproduces values in the saved validation report.</p></div><div class="run-controls"><button class="button button-primary" id="run-pipeline" type="button"><span id="pipeline-spinner" class="spinner" hidden aria-hidden="true"></span><span id="run-label">Run Pipeline</span><span class="run-arrow" aria-hidden="true">▶</span></button><button id="reset-pipeline" type="button" disabled>Reset</button></div></div>
+            <div class="console-output"><p id="pipeline-status" class="pipeline-status" role="status" aria-live="polite">Ready to simulate</p><pre id="pipeline-output" data-state="idle" tabindex="0" aria-label="Simulated pipeline output">// Waiting for a run.
+// Click “Run Pipeline” to preview
+// the recorded validation result.</pre></div>
+            <a class="console-source" href="https://github.com/aabelnegash/hospital-cleaning-project/blob/main/reports/validation_report.txt" target="_blank" rel="noopener">View the recorded validation report <span aria-hidden="true">↗</span></a>
+          </section>
+        </div>
+      </section>
+      <section class="toolkit" aria-labelledby="toolkit-title"><h2 id="toolkit-title">Tools used in these projects</h2><ul><li>Python</li><li>pandas</li><li>SQL</li><li>SQLite</li><li>Excel</li><li>Power BI</li><li>GitHub Actions</li></ul></section>
+    </main>
+    <footer class="site-footer shell"><span>Abel Negash <span class="footer-divider">/</span> Data analytics portfolio</span><a href="https://github.com/aabelnegash" target="_blank" rel="noopener">aabelnegash <span aria-hidden="true">↗</span></a><a href="#main">Back to top <span aria-hidden="true">↑</span></a></footer>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
