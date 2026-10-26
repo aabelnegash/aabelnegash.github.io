@@ -1,105 +1,57 @@
-export const sampleOutput = Object.freeze({
-  mode: 'simulation',
-  status: 'success',
+export const recordedOutput = Object.freeze({
+  source: 'Recorded validation report',
   rows: 4812,
   columns: 20,
   validation_failures: 0,
 });
 
-const sandboxBindings = new WeakMap();
+const bindings = new WeakMap();
 
-export function initSandbox() {
-  const consolePanel = document.getElementById('sandbox-console');
-  const runButton = document.getElementById('run-pipeline');
-  const runLabel = document.getElementById('run-label');
-  const spinner = document.getElementById('pipeline-spinner');
-  const resetButton = document.getElementById('reset-pipeline');
-  const status = document.getElementById('pipeline-status');
-  const output = document.getElementById('pipeline-output');
-  const terminalStatus = document.getElementById('terminal-status');
-
-  if (
-    !consolePanel || !runButton || !runLabel || !spinner ||
-    !resetButton || !status || !output || !terminalStatus
-  ) {
-    throw new Error('The pipeline simulation is missing a required element.');
+/** Display saved report values; this example does not execute a pipeline. */
+export function initValidationExample() {
+  const showButton = document.getElementById('show-output');
+  const resetButton = document.getElementById('reset-output');
+  const status = document.getElementById('output-status');
+  const output = document.getElementById('validation-output');
+  if (!showButton || !resetButton || !status || !output) {
+    throw new Error('The recorded validation example is missing a required element.');
   }
+  if (bindings.has(output)) return bindings.get(output);
 
-  if (sandboxBindings.has(consolePanel)) {
-    return sandboxBindings.get(consolePanel);
-  }
+  const initialOutput = output.textContent;
+  const initiallyHidden = output.hidden;
+  const initialStatus = status.textContent || 'Recorded output is hidden.';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
 
-  const idleOutput = output.textContent;
-  let completionTimer = null;
-  let runVersion = 0;
-
-  function cancelCompletion() {
-    runVersion += 1;
-    if (completionTimer !== null) {
-      window.clearTimeout(completionTimer);
-      completionTimer = null;
-    }
+  function show() {
+    output.hidden = false;
+    output.textContent = JSON.stringify(recordedOutput, null, 2);
+    output.dataset.state = 'recorded';
+    status.textContent = 'Recorded report output shown.';
+    showButton.disabled = true;
+    resetButton.disabled = false;
   }
 
   function reset() {
-    cancelCompletion();
-    runButton.disabled = false;
-    resetButton.disabled = true;
-    spinner.hidden = true;
-    runLabel.textContent = 'Run Pipeline';
-    status.textContent = 'Ready to simulate';
-    terminalStatus.textContent = 'IDLE';
-    output.textContent = idleOutput;
+    output.hidden = initiallyHidden;
+    output.textContent = initialOutput;
     output.dataset.state = 'idle';
-    consolePanel.setAttribute('aria-busy', 'false');
-  }
-
-  function run() {
-    if (completionTimer !== null) return;
-
-    cancelCompletion();
-    const thisRun = runVersion;
-    runButton.disabled = true;
-    resetButton.disabled = false;
-    spinner.hidden = false;
-    runLabel.textContent = 'Validating schemas…';
-    status.textContent = 'Simulation running · no Python is executed';
-    terminalStatus.textContent = 'SIMULATING';
-    output.dataset.state = 'running';
-    output.textContent = [
-      '> Simulation started',
-      '> Validating schemas…',
-      '> Checking the recorded report values…',
-      '> No Python is executed in this preview.',
-    ].join('\n');
-    consolePanel.setAttribute('aria-busy', 'true');
-
-    completionTimer = window.setTimeout(() => {
-      if (thisRun !== runVersion) return;
-
-      completionTimer = null;
-      output.textContent = JSON.stringify(sampleOutput, null, 2);
-      output.dataset.state = 'success';
-      runLabel.textContent = 'Run again';
-      runButton.disabled = false;
-      spinner.hidden = true;
-      status.textContent = 'Simulation complete · recorded report values';
-      terminalStatus.textContent = 'SUCCESS';
-      consolePanel.setAttribute('aria-busy', 'false');
-    }, 1400);
+    status.textContent = initialStatus;
+    showButton.textContent = 'Show recorded output';
+    showButton.disabled = false;
+    resetButton.disabled = true;
   }
 
   function dispose() {
-    cancelCompletion();
-    runButton.removeEventListener('click', run);
+    showButton.removeEventListener('click', show);
     resetButton.removeEventListener('click', reset);
-    sandboxBindings.delete(consolePanel);
+    bindings.delete(output);
   }
 
-  runButton.addEventListener('click', run);
+  showButton.addEventListener('click', show);
   resetButton.addEventListener('click', reset);
-  sandboxBindings.set(consolePanel, dispose);
+  bindings.set(output, dispose);
   reset();
-
   return dispose;
 }

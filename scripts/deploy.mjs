@@ -46,6 +46,16 @@ async function deploy() {
     throw new Error(`Set this repository's origin to https://github.com/${expectedRepository}.git before deploying.`);
   }
 
+  console.log('Checking project content…');
+  const contentCheck = spawnSync(process.execPath, [join(projectRoot, 'scripts/check-content.mjs')], {
+    cwd: projectRoot,
+    env: process.env,
+    stdio: 'inherit',
+  });
+  if (contentCheck.error || contentCheck.status !== 0) {
+    throw new Error('The project content check failed. Correct the reported entry before deploying.');
+  }
+
   console.log('Building the portfolio…');
   const build = spawnSync(process.execPath, [join(projectRoot, 'node_modules/vite/bin/vite.js'), 'build'], {
     cwd: projectRoot,

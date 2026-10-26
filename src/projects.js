@@ -1,68 +1,30 @@
-// Project catalog: add future projects here; the interface renders from this data.
-export const metrics = [
-  {
-    "value": "4,812",
-    "label": "Hospitals in dataset",
-    "detail": "Recorded cleaned hospital dataset",
-    "sourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/reports/change_report.txt#L5-L6"
-  },
-  {
-    "value": "3,567",
-    "label": "Hospitals with ratings",
-    "detail": "Overall ratings available",
-    "sourceUrl": "https://github.com/aabelnegash/hospital-quality-analysis/blob/main/README.md#L209-L211"
-  },
-  {
-    "value": "28 → 20",
-    "label": "Columns, raw → clean",
-    "detail": "Eight footnote columns removed",
-    "sourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/reports/change_report.txt#L5-L10"
-  },
-  {
-    "value": "0",
-    "label": "Reported validation failures",
-    "detail": "Recorded validation report",
-    "sourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/reports/validation_report.txt#L1-L26"
-  }
-];
-
+// Project catalog. Add or reorder entries without changing the page layout.
 export const projects = [
   {
-    "id": "hospital-data-cleaning",
-    "title": "Hospital Data Cleaning",
-    "category": "Data cleaning",
-    "pipeline": ["Profile", "Clean", "Validate", "Report"],
-    "summary": "A reproducible Python/pandas pipeline for the CMS Hospital General Information dataset. Profiles raw data, standardizes selected fields, enforces a consistent output schema, and writes validation and change reports.",
+    "id": "auto-loan-credit-risk",
+    "title": "Auto Loan Credit Risk",
+    "category": "Predictive modeling",
+    "featured": true,
+    "summary": "SAS Viya credit-risk modeling and loan decisioning using synthetic data for the SAS Hackathon 2026 Student Track.",
     "technologies": [
-      "Python",
-      "pandas",
-      "GitHub Actions"
+      "SAS Viya",
+      "Model Studio",
+      "Intelligent Decisioning",
+      "Python"
     ],
-    "projectUrl": "https://aabelnegash.github.io/hospital-cleaning-project/",
-    "repositoryUrl": "https://github.com/aabelnegash/hospital-cleaning-project",
+    "repositoryUrl": "https://github.com/aabelnegash/auto-loan-credit-risk",
     "highlights": [
-      "Profiles missing values, duplicates and data types",
-      "Standardizes state, ZIP code and phone fields",
-      "Removes footnote columns and applies a fixed 20-column output schema",
-      "Writes validation reports; sample-data validation runs in GitHub Actions"
+      "Compared six model families; the selected logistic regression recorded a validation AUC of 0.7992 on 40,000 loans.",
+      "Audited 100,000 scored applications for ID coverage, valid probabilities, and consistency with the saved decision rule.",
+      "Evaluated approval policies and validated scoring outputs before accepted Kaggle submissions."
     ],
-    "code": {
-      "language": "python",
-      "filename": "src/clean.py",
-      "sourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/src/clean.py#L18-L34",
-        "sourceLines": [
-        18,
-        34
-      ],
-      "content": "def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:\n    df = df.copy()\n    df.columns = (\n        df.columns.str.strip()\n        .str.lower()\n        .str.replace(r\"\\s+\", \"_\", regex=True)\n        .str.replace(r\"[^a-z0-9_]\", \"\", regex=True)\n    )\n    return df\n\ndef clean_state(s: pd.Series) -> pd.Series:\n    return s.astype(\"string\").str.strip().str.upper()\n\ndef clean_zip(s: pd.Series) -> pd.Series:\n    s = s.astype(\"string\").str.strip().str.replace(r\"[^0-9]\", \"\", regex=True)\n    s = s.str.slice(0, 5)\n    return s",
-      "caption": "Source excerpt: column names, state values and ZIP codes are standardized."
-    }
+    "scopeNote": "The public repository contains documentation and aggregate results. The implementation remains private during the competition."
   },
   {
     "id": "hospital-quality-analysis",
     "title": "Hospital Quality Analysis",
-    "category": "Analysis & reporting",
-    "summary": "An analysis of cleaned CMS hospital data using SQLite, SQL, Excel and Power BI. Compares rating coverage, sample-adjusted rankings and national quality domains across states, ownership types and hospital types.",
+    "category": "Data analysis",
+    "summary": "SQL analysis of hospital ratings and CMS quality domains, with Excel reporting and a three-page Power BI dashboard.",
     "technologies": [
       "SQL",
       "SQLite",
@@ -82,7 +44,7 @@ export const projects = [
       "language": "sql",
       "filename": "sql/04_state_analysis.sql",
       "sourceUrl": "https://github.com/aabelnegash/hospital-quality-analysis/blob/main/sql/04_state_analysis.sql#L25-L49",
-        "sourceLines": [
+      "sourceLines": [
         25,
         49
       ],
@@ -93,13 +55,48 @@ export const projects = [
       "src": "./images/hospital-quality-overview.png",
       "alt": "Existing Power BI hospital quality overview screenshot",
       "caption": "Power BI Overview",
-      "url": "https://aabelnegash.github.io/hospital-quality-analysis/#dashboard-screenshots"
-    }
+      "url": "https://aabelnegash.github.io/hospital-quality-analysis/#dashboard-screenshots",
+      "width": 1951,
+      "height": 1091
+    },
+    "featured": true
+  },
+  {
+    "id": "hospital-data-cleaning",
+    "title": "Hospital Data Cleaning",
+    "category": "Data preparation",
+    "pipeline": [
+      "Profile",
+      "Clean",
+      "Validate",
+      "Report"
+    ],
+    "summary": "A Python/pandas pipeline for profiling, cleaning, and validating CMS hospital data, with change reports and automated sample-data checks.",
+    "technologies": [
+      "Python",
+      "pandas",
+      "GitHub Actions"
+    ],
+    "projectUrl": "https://aabelnegash.github.io/hospital-cleaning-project/",
+    "repositoryUrl": "https://github.com/aabelnegash/hospital-cleaning-project",
+    "highlights": [
+      "Profiles missing values, duplicates and data types",
+      "Standardizes state, ZIP code and phone fields",
+      "Removes footnote columns and applies a fixed 20-column output schema",
+      "Writes validation reports; sample-data validation runs in GitHub Actions"
+    ],
+    "code": {
+      "language": "python",
+      "filename": "src/clean.py",
+      "sourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/src/clean.py#L18-L34",
+      "sourceLines": [
+        18,
+        34
+      ],
+      "content": "def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:\n    df = df.copy()\n    df.columns = (\n        df.columns.str.strip()\n        .str.lower()\n        .str.replace(r\"\\s+\", \"_\", regex=True)\n        .str.replace(r\"[^a-z0-9_]\", \"\", regex=True)\n    )\n    return df\n\ndef clean_state(s: pd.Series) -> pd.Series:\n    return s.astype(\"string\").str.strip().str.upper()\n\ndef clean_zip(s: pd.Series) -> pd.Series:\n    s = s.astype(\"string\").str.strip().str.replace(r\"[^0-9]\", \"\", regex=True)\n    s = s.str.slice(0, 5)\n    return s",
+      "caption": "Source excerpt: column names, state values and ZIP codes are standardized."
+    },
+    "featured": true,
+    "exampleUrl": "./examples/hospital-validation/"
   }
 ];
-
-export const sandbox = {
-  "code": "    # ---------- ZIP / Phone / State formats ----------\n    for col, pattern in [\n        (\"zip_code\", r\"^\\d{5}$\"),\n        (\"phone_number\", r\"^\\d{10}$\"),\n        (\"state\", r\"^[A-Z]{2}$\"),\n    ]:\n        if col not in df.columns:\n            failures += 1\n            fail(lines, f\"Missing required column: {col}\")\n            continue\n\n        s = df[col].dropna()\n        bad = s[~s.str.match(pattern)]\n        if len(bad) == 0:\n            ok(lines, f\"{col} format valid (0 bad)\")\n        else:\n            failures += 1\n            fail(lines, f\"{col} format invalid: {len(bad)} examples={bad.head(10).tolist()}\")",
-  "codeLabel": "Source excerpt · src/validate.py · lines 78–95",
-  "codeSourceUrl": "https://github.com/aabelnegash/hospital-cleaning-project/blob/main/src/validate.py#L78-L95"
-};
