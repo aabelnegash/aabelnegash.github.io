@@ -12,6 +12,7 @@ export const projects = [
       "Intelligent Decisioning",
       "Python"
     ],
+    "projectUrl": "https://aabelnegash.github.io/auto-loan-credit-risk/",
     "repositoryUrl": "https://github.com/aabelnegash/auto-loan-credit-risk",
     "highlights": [
       "Compared six model families; the selected logistic regression recorded a validation AUC of 0.7992 on 40,000 loans.",
