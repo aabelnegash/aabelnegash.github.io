@@ -10,7 +10,7 @@ export const metrics = [
     "value": "3,567",
     "label": "Hospitals with ratings",
     "detail": "Overall ratings available",
-    "sourceUrl": "https://github.com/aabelnegash/hospital-quality-analysis/blob/main/README.md#L209-L211"
+    "sourceUrl": "https://github.com/aabelnegash/hospital-quality-analysis/blob/main/README.md#rating-rankings"
   },
   {
     "value": "28 → 20",
