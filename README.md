@@ -79,6 +79,6 @@ The script builds the site and pushes the output to `gh-pages`. GitHub Pages is 
 ## Notes
 
 - Each project has a separate site and public repository
-- The credit-risk repository contains documentation and aggregate results while the hackathon implementation remains private
+- The credit-risk repository includes the SAS workflow, screenshots, Python policy analysis, and validation tests from the hackathon
 - The hospital validation example displays saved report values; it does not run Python or revalidate the dataset
 - Build output and installed dependencies are not tracked in `main`

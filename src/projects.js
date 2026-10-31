@@ -17,9 +17,15 @@ export const projects = [
     "highlights": [
       "Compared six model families; the selected logistic regression recorded a validation AUC of 0.7992 on 40,000 loans.",
       "Audited 100,000 scored applications for ID coverage, valid probabilities, and consistency with the saved decision rule.",
-      "Evaluated approval policies and validated scoring outputs before accepted Kaggle submissions."
+      "The combined 0.14 approval policy recorded a Kaggle public score of 50.005, up from 48.168."
     ],
-    "scopeNote": "The public repository contains documentation and aggregate results. The implementation remains private during the competition."
+    "scopeNote": "Includes SAS workflow screenshots, the approval rule, Python policy analysis, and validation tests.",
+    "preview": {
+      "src": "https://aabelnegash.github.io/auto-loan-credit-risk/docs/images/model-studio-pipeline.png",
+      "alt": "SAS Model Studio pipeline with preprocessing, candidate models, and model comparison",
+      "caption": "SAS Model Studio pipeline",
+      "url": "https://github.com/aabelnegash/auto-loan-credit-risk/blob/main/docs/sas-workflow.md"
+    }
   },
   {
     "id": "hospital-quality-analysis",
