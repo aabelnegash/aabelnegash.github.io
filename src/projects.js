@@ -1,8 +1,8 @@
 // Project details and links for the homepage and project directory.
 export const projects = [
   {
-    "id": "auto-loan-credit-risk",
-    "title": "Auto Loan Credit Risk",
+    "id": "sas-hackathon-auto-loan-credit-risk",
+    "title": "SAS Hackathon: Auto Loan Credit Risk",
     "category": "Predictive modeling",
     "featured": true,
     "summary": "SAS Viya credit-risk modeling and loan decisioning using synthetic data for the SAS Hackathon 2026 Student Track.",
@@ -12,8 +12,8 @@ export const projects = [
       "Intelligent Decisioning",
       "Python"
     ],
-    "projectUrl": "https://aabelnegash.github.io/auto-loan-credit-risk/",
-    "repositoryUrl": "https://github.com/aabelnegash/auto-loan-credit-risk",
+    "projectUrl": "https://aabelnegash.github.io/sas-hackathon-auto-loan-credit-risk/",
+    "repositoryUrl": "https://github.com/aabelnegash/sas-hackathon-auto-loan-credit-risk",
     "highlights": [
       "Compared six model families; the selected logistic regression recorded a validation AUC of 0.7992 on 40,000 loans.",
       "Audited 100,000 scored applications for ID coverage, valid probabilities, and consistency with the saved decision rule.",
@@ -21,10 +21,10 @@ export const projects = [
     ],
     "scopeNote": "Includes SAS workflow screenshots, the approval rule, Python policy analysis, and validation tests.",
     "preview": {
-      "src": "https://aabelnegash.github.io/auto-loan-credit-risk/docs/images/model-studio-pipeline.png",
+      "src": "https://aabelnegash.github.io/sas-hackathon-auto-loan-credit-risk/docs/images/model-studio-pipeline.png",
       "alt": "SAS Model Studio pipeline with preprocessing, candidate models, and model comparison",
       "caption": "SAS Model Studio pipeline",
-      "url": "https://github.com/aabelnegash/auto-loan-credit-risk/blob/main/docs/sas-workflow.md"
+      "url": "https://github.com/aabelnegash/sas-hackathon-auto-loan-credit-risk/blob/main/docs/sas-workflow.md"
     }
   },
   {
